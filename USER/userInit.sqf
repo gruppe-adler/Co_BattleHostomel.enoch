@@ -21,4 +21,29 @@ _editableLocation setText "Hostomel Airport";
 		};
 	};
 
-}] call CBA_fnc_addClassEventHandler;
+}, true, [], true] call CBA_fnc_addClassEventHandler;
+
+
+// add action to russian flags 
+["rhs_Flag_Russia_F", "init", {
+	params ["_flag"];
+
+	_flag addAction
+	[
+		"Raise UA Flag",
+		{
+			player playAction "PutDown";
+			sleep 0.5;
+			(_this select 0) forceFlagTexture "data\flag_ua.paa";
+			[_this select 0, flagAnimationPhase (_this select 0) + 0.2, 0.2] call BIS_fnc_animateFlag;
+			_this select 0 removeAction (_this select 2);
+		},
+		"",
+		10,
+		true,
+		true,
+		"",
+		"_this distance2D _target < 2"
+	];
+
+}, true, [], true] call CBA_fnc_addClassEventHandler;
