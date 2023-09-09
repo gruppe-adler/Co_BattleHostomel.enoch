@@ -75,7 +75,7 @@ grad_hostomel_fnc_createMineField =
 
 		diag_log format ["created : %1", _mine];
 
-		if (true) then {
+		if (false) then {
 			private _markerName = format ["%1_marker", _mine];
 			private _pos = getPosATL _mine;
 			private _marker = createMarker [_markerName, _pos];
