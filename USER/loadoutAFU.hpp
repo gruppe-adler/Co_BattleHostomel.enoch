@@ -26,7 +26,7 @@ class AFU {
         vest[] = {"vest05", "vest08", "vest02r", "vest03", "vest06", "vest01r"};
         backpack = "";
         headgear[] = {"h2", "h4"};
-        primaryWeapon[] = {"Ltf_EFT_alpha_1_afg_zen2_dtk", "Ltf_EFT_alpha_1_afg_zen2_fh","Ltf_EFT_alpha_1_afg_fab_dtk","Ltf_EFT_alpha_1_rvg_fab_dtk","Ltf_EFT_alpha_1_rvg_zen2_fh","Ltf_EFT_alpha_1_afg_zen_dtk","Ltf_EFT_alpha_1_rvg_zen_fh","Ltf_EFT_alpha_1_afg_zen2_dtk","Ltf_EFT_alpha_1_rvg_zen2_dtk","Ltf_EFT_alpha_1_afg_fab_fh","Ltf_EFT_alpha_1_rvg_fab_fh","Ltf_EFT_alpha_1_afg_zen_fh"};
+        primaryWeapon[] = {"arifle_AK12U_F", "arifle_AK12U_arid_F", "arifle_AK12U_lush_F", "arifle_AK12_F", "arifle_AK12_arid_F","arifle_AK12_lush_F"};
         primaryWeaponMagazine[] = {"rhs_30Rnd_545x39_7N10_2mag_AK", "rhs_30Rnd_545x39_7N10_2mag_camo_AK", "rhs_30Rnd_545x39_7N10_2mag_plum_AK", "rhs_30Rnd_545x39_7N10_camo_AK", "rhs_30Rnd_545x39_7N10_plum_AK", "rhs_30Rnd_545x39_7N6_AK"};
         primaryWeaponMuzzle = SUPPRESSORITEM;
         primaryWeaponPointer = LLITEM;
@@ -162,9 +162,18 @@ class AFU {
             };
         };
 
+        //Engineer
+        class engineer_F: Soldier_F {
+            secondaryWeapon = "hgun_esd_01_F";
+            addItemsToBackpack[] = {
+                "ace_wirecutter",
+                "ace_entrenchingtool"
+            };
+        };
+
         //Grenadier
         class Soldier_GL_F: Soldier_F {
-            primaryWeapon = "rhs_weap_m4a1_blockII_M203_bk";
+            primaryWeapon[] = {"arifle_AK12_GL_F", "arifle_AK12_GL_arid_F", "arifle_AK12_GL_lush_F"};
             addItemsToVest[] = {
                 LIST_2("HandGrenade"),
                 LIST_2("SmokeShell"),
@@ -267,7 +276,7 @@ class AFU {
 
         //Team Leader
         class Soldier_TL_F: Soldier_F {
-            primaryWeapon = "rhs_weap_m4a1_blockII_M203_bk";
+            primaryWeapon[] = {"arifle_AK12_GL_F", "arifle_AK12_GL_arid_F", "arifle_AK12_GL_lush_F"};
             headgear[] = {"H1", "h3"};
             vest = "rhsusf_iotv_ocp_Teamleader";
             addItemsToVest[] = {

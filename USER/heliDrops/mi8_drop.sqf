@@ -1,8 +1,10 @@
+params ["_filename"];
+
 private _type = "RHS_Mi8mt_Cargo_vdv";
 private _mi8 = [[0,0,0], -152, _type, east] call BIS_fnc_spawnVehicle;
 
-systemchat str _mi8;
-private _recording = call compile loadFile "USER\heliDrops\fn_mi8_recording_1.sqf";
+// systemchat str _mi8;
+private _recording = call compile loadFile ("USER\heliDrops\" + _filename);
 
 [_mi8,  _recording] spawn BIS_fnc_unitPlay;
 
@@ -18,11 +20,11 @@ private _group = creategroup east;
 	"rhs_vdv_arifleman",
 	"rhs_vdv_arifleman",
 	"rhs_vdv_arifleman",
-	"rhs_vdv_machinegunner_assistant",
+	"rhs_vdv_machinegunner",
 	"rhs_vdv_LAT",
-	"rhs_vdv_machinegunner_assistant",
-	"rhs_vdv_LAT",
-	"rhs_vdv_machinegunner_assistant",
+	"rhs_vdv_at",
+	"rhs_vdv_marksman",
+	"rhs_vdv_medic",
 	"rhs_vdv_LAT",
 	"rhs_vdv_machinegunner_assistant",
 	"rhs_vdv_LAT",

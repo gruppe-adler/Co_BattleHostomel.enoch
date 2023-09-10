@@ -3,9 +3,4 @@
 *   Ist in CfgFunctions included.
 */
 
-
-class GRAD_hostomel {
-	tag = "grad_hostomel";
-
-	#include "heliDrops\CfgFunctions.hpp";
-};
+#include "grad_grinder\CfgFunctions.hpp"

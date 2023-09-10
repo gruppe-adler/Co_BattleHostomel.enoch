@@ -112,3 +112,14 @@ if(isServer) then {
 		};
 	} forEach allMapMarkers;
 };
+
+
+[
+	"Hostomel",
+	"Helis from North",
+	{ 
+		params ["_modulePosition"]; 
+		
+		[["USER\heliDrops\mi8_drop.sqf"], "mi8_north_1.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+	}
+] call zen_custom_modules_fnc_register;
