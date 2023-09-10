@@ -164,6 +164,7 @@ class AFU {
 
         //Engineer
         class engineer_F: Soldier_F {
+            backpack = "rhs_assault_umbts_engineer_empty";
             secondaryWeapon = "hgun_esd_01_F";
             addItemsToBackpack[] = {
                 "ace_wirecutter",
@@ -263,7 +264,6 @@ class AFU {
         class Soldier_SL_F: Soldier_F {
             backpack = "TFAR_rt1523g_big_rhs";
             headgear = "h6";
-            vest = "rhsusf_iotv_ocp_Squadleader";
             addItemsToBackpack[] = {
                 LIST_2("SmokeShellBlue"),
                 LIST_2("SmokeShellGreen"),
@@ -278,7 +278,6 @@ class AFU {
         class Soldier_TL_F: Soldier_F {
             primaryWeapon[] = {"arifle_AK12_GL_F", "arifle_AK12_GL_arid_F", "arifle_AK12_GL_lush_F"};
             headgear[] = {"H1", "h3"};
-            vest = "rhsusf_iotv_ocp_Teamleader";
             addItemsToVest[] = {
                 LIST_2("HandGrenade"),
                 LIST_2("SmokeShell"),

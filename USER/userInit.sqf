@@ -25,28 +25,59 @@ _editableLocation setText "Hostomel Airport";
 
 
 // add action to russian flags 
-["rhs_Flag_Russia_F", "init", {
-	params ["_flag"];
+{
+	private _flag = _x;
+
+	(_flag) forceFlagTexture "rhsafrf\addons\rhs_main\data\flag_rus_co.paa";
 
 	_flag addAction
 	[
 		"Raise UA Flag",
 		{
+			private _flag = _this select 0;
 			player playAction "PutDown";
+			_flag removeAction (_this select 2);
 			sleep 0.5;
-			(_this select 0) forceFlagTexture "data\flag_ua.paa";
-			[_this select 0, flagAnimationPhase (_this select 0) + 0.2, 0.2] call BIS_fnc_animateFlag;
-			_this select 0 removeAction (_this select 2);
+			[_flag, 0] call BIS_fnc_animateFlag;
+			waitUntil { flagAnimationPhase _flag < 0.1 };
+			(_flag) forceFlagTexture "data\flag_ua.paa";
+			[_flag, 1] call BIS_fnc_animateFlag;
+
+			_flag setVariable ["flagRaisedUA", true, true];
 		},
 		"",
 		10,
 		true,
 		true,
 		"",
-		"_this distance2D _target < 2"
+		"_this distance2D _target < 2 && !(_target getVariable ['flagRaisedUA', false])"
 	];
 
-}, true, [], true] call CBA_fnc_addClassEventHandler;
+
+	_flag addAction
+	[
+		"Raise Russian Flag",
+		{
+			private _flag = _this select 0;
+			player playAction "PutDown";
+			_flag removeAction (_this select 2);
+			sleep 0.5;
+			[_flag, 0] call BIS_fnc_animateFlag;
+			waitUntil { flagAnimationPhase _flag < 0.1 };
+			(_flag) forceFlagTexture "rhsafrf\addons\rhs_main\data\flag_rus_co.paa";
+			[_flag, 1] call BIS_fnc_animateFlag;
+
+			_flag setVariable ["flagRaisedUA", false, true];
+		},
+		"",
+		10,
+		true,
+		true,
+		"",
+		"_this distance2D _target < 2 && (_target getVariable ['flagRaisedUA', false])"
+	];
+
+} forEach allMissionObjects "rhs_Flag_Russia_F";
 
 
 
@@ -120,6 +151,51 @@ if(isServer) then {
 	{ 
 		params ["_modulePosition"]; 
 		
-		[["USER\heliDrops\mi8_drop.sqf"], "mi8_north_1.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach [
+			"mi8_north_1.sqf",
+			"mi8_north_2.sqf",
+			"mi8_north_3.sqf",
+			"mi8_north_4.sqf"
+		];
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel",
+	"Helis from Center",
+	{ 
+		params ["_modulePosition"]; 
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach [
+			"mi8_center_1.sqf",
+			"mi8_center_2.sqf",
+			"mi8_center_3.sqf",
+			"mi8_center_4.sqf"
+		];
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel",
+	"Helis from River",
+	{ 
+		params ["_modulePosition"]; 
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach [
+			"mi8_river_1.sqf",
+			"mi8_river_2.sqf",
+			"mi8_river_3.sqf"
+		];
 	}
 ] call zen_custom_modules_fnc_register;

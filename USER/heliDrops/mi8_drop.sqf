@@ -1,7 +1,8 @@
-params ["_filename"];
+params ["_filename", "_index"];
 
 private _type = "RHS_Mi8mt_Cargo_vdv";
-private _mi8 = [[0,0,0], -152, _type, east] call BIS_fnc_spawnVehicle;
+private _mi8 = [[_index * 200, _index * 200, 200], -152, _type, east] call BIS_fnc_spawnVehicle;
+_mi8 params ["_mi8"];
 
 // systemchat str _mi8;
 private _recording = call compile loadFile ("USER\heliDrops\" + _filename);
@@ -36,16 +37,25 @@ private _group = creategroup east;
 	_x moveInCargo _mi8;
 } forEach units _group; 
 
+
 [{
 	params ["_mi8", "_group"];
-	private _position = getPosATL _mi8;
-	_position#2 < 2 && speed _mi8 < 3
+	!isTouchingGround _mi8
 },{
 	params ["_mi8", "_group"];
-    doGetOut units _group;
-	[_group] spawn {
-		params ["_group"];
-		{ moveOut _x; sleep random 0.1; } forEach units _group;
-	};
-	
+	[{
+		params ["_mi8", "_group"];
+		private _position = getPosATL _mi8;
+		_position#1 < worldSize && _position#2 < 2 && speed _mi8 < 3
+	},{
+		params ["_mi8", "_group"];
+		doGetOut units _group;
+		[_group] spawn {
+			params ["_group"];
+			{ moveOut _x; sleep random 0.1; } forEach units _group;
+		};
+		
+	}, [_mi8, _group]] call CBA_fnc_waitUntilAndExecute;
+
 }, [_mi8, _group]] call CBA_fnc_waitUntilAndExecute;
+
