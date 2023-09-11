@@ -144,10 +144,10 @@ if(isServer) then {
 	} forEach allMapMarkers;
 };
 
-
+// NORTH 
 [
-	"Hostomel",
-	"Helis from North",
+	"Hostomel Helis North",
+	"4 Helis from North",
 	{ 
 		params ["_modulePosition"]; 
 		
@@ -163,40 +163,227 @@ if(isServer) then {
 	}
 ] call zen_custom_modules_fnc_register;
 
-
 [
-	"Hostomel",
-	"Helis from Center",
+	"Hostomel Helis North",
+	"3 Helis from North",
 	{ 
 		params ["_modulePosition"]; 
 		
+		private _helis = [
+			"mi8_north_1.sqf",
+			"mi8_north_2.sqf",
+			"mi8_north_3.sqf",
+			"mi8_north_4.sqf"
+		];
+		
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 3;
+
 		{
 			private _index = _forEachIndex;
 			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
-		} forEach [
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis North",
+	"2 Helis from North",
+	{ 
+		params ["_modulePosition"]; 
+		
+		private _helis = [
+			"mi8_north_1.sqf",
+			"mi8_north_2.sqf",
+			"mi8_north_3.sqf",
+			"mi8_north_4.sqf"
+		];
+		
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 2;
+
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis North",
+	"1 Heli from North",
+	{ 
+		params ["_modulePosition"]; 
+		
+		private _helis = [
+			"mi8_north_1.sqf",
+			"mi8_north_2.sqf",
+			"mi8_north_3.sqf",
+			"mi8_north_4.sqf"
+		];
+		
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 1;
+
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+
+// CENTER
+[
+	"Hostomel Helis Center",
+	"4 Helis from Center",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
 			"mi8_center_1.sqf",
 			"mi8_center_2.sqf",
 			"mi8_center_3.sqf",
 			"mi8_center_4.sqf"
 		];
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis Center",
+	"3 Helis from Center",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi8_center_1.sqf",
+			"mi8_center_2.sqf",
+			"mi8_center_3.sqf",
+			"mi8_center_4.sqf"
+		];
+
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 3;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis Center",
+	"2 Helis from Center",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi8_center_1.sqf",
+			"mi8_center_2.sqf",
+			"mi8_center_3.sqf",
+			"mi8_center_4.sqf"
+		];
+
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 2;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis Center",
+	"1 Heli from Center",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi8_center_1.sqf",
+			"mi8_center_2.sqf",
+			"mi8_center_3.sqf",
+			"mi8_center_4.sqf"
+		];
+
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
 	}
 ] call zen_custom_modules_fnc_register;
 
 
 [
-	"Hostomel",
-	"Helis from River",
+	"Hostomel Helis River",
+	"3 Helis from River",
 	{ 
 		params ["_modulePosition"]; 
-		
-		{
-			private _index = _forEachIndex;
-			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
-		} forEach [
+
+		private _helis = [
 			"mi8_river_1.sqf",
 			"mi8_river_2.sqf",
 			"mi8_river_3.sqf"
 		];
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis River",
+	"2 Helis from River",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi8_river_1.sqf",
+			"mi8_river_2.sqf",
+			"mi8_river_3.sqf"
+		];
+
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 2;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Helis River",
+	"1 Heli from River",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi8_river_1.sqf",
+			"mi8_river_2.sqf",
+			"mi8_river_3.sqf"
+		];
+
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi8_drop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
 	}
 ] call zen_custom_modules_fnc_register;
 
