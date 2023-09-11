@@ -23,11 +23,11 @@
 class AFU {
     class AllUnits {
         uniform[] = {"Inf01", "Inf02", "Inf03", "Inf05", "Soldier03", "Inf06", "Inf08", "Soldier02", "Soldier05"};
-        vest[] = {"vest05", "vest08", "vest02r", "vest03", "vest06", "vest01r"};
+        vest[] = {"vest04r"};
         backpack = "";
         headgear[] = {"h2", "h4"};
         primaryWeapon[] = {"arifle_AK12U_F", "arifle_AK12U_arid_F", "arifle_AK12U_lush_F", "arifle_AK12_F", "arifle_AK12_arid_F","arifle_AK12_lush_F"};
-        primaryWeaponMagazine[] = {"rhs_30Rnd_545x39_7N10_2mag_AK", "rhs_30Rnd_545x39_7N10_2mag_camo_AK", "rhs_30Rnd_545x39_7N10_2mag_plum_AK", "rhs_30Rnd_545x39_7N10_camo_AK", "rhs_30Rnd_545x39_7N10_plum_AK", "rhs_30Rnd_545x39_7N6_AK"};
+        primaryWeaponMagazine[] = {"hlc_30Rnd_762x39_AP_ak_PMAG", "hlc_30Rnd_762x39_AP_ak", "hlc_30Rnd_762x39_AP_ak_6L10"};
         primaryWeaponMuzzle = SUPPRESSORITEM;
         primaryWeaponPointer = LLITEM;
         primaryWeaponOptics = "";
@@ -61,7 +61,8 @@ class AFU {
                 LIST_2("HandGrenade"),
                 LIST_2("SmokeShell"),
                 LIST_2("rhsusf_mag_15Rnd_9x19_JHP"),
-                LIST_7("rhs_30Rnd_545x39_7N6_AK")
+                LIST_4("hlc_30Rnd_762x39_AP_ak"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak_6L10")
             };
         };
 
@@ -131,7 +132,8 @@ class AFU {
                 LIST_2("SmokeShellPurple"),
                 LIST_8("SmokeShell"),
                 LIST_2("rhsusf_mag_15Rnd_9x19_JHP"),
-                LIST_8("rhs_30Rnd_545x39_7N6_AK")
+                LIST_4("hlc_30Rnd_762x39_AP_ak"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak_6L10")
             };
 
             class Rank {
@@ -179,7 +181,8 @@ class AFU {
                 LIST_2("HandGrenade"),
                 LIST_2("SmokeShell"),
                 LIST_2("rhsusf_mag_15Rnd_9x19_JHP"),
-                LIST_7("rhs_30Rnd_545x39_7N6_AK"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak_6L10"),
                 LIST_6("rhs_mag_M441_HE"),
                 LIST_2("rhs_mag_m713_Red")
             };
@@ -282,12 +285,18 @@ class AFU {
                 LIST_2("HandGrenade"),
                 LIST_2("SmokeShell"),
                 LIST_2("rhsusf_mag_15Rnd_9x19_JHP"),
-                LIST_8("rhs_30Rnd_545x39_7N6_AK"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak"),
+                LIST_4("hlc_30Rnd_762x39_AP_ak_6L10"),
                 LIST_2("1Rnd_SmokeRed_Grenade_shell"),
                 LIST_2("1Rnd_Smoke_Grenade_shell"),
                 LIST_2("1Rnd_SmokeBlue_Grenade_shell"),
                 LIST_2("1Rnd_HE_Grenade_shell")
             };
+        };
+
+        //Zeus
+        class officer_F: Soldier_SL_F {
+            headgear = "rhs_8point_marpatwd";
         };
     };
 };

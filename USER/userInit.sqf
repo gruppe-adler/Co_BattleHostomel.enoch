@@ -95,7 +95,7 @@ grad_hostomel_fnc_createMineField =
 	_areaDimensions = getMarkerSize _markerArea;
 	_minesPositionRange = _areaDimensions select 0;
 
-	diag_log format ["mine count in area : %1", _minesCountInArea];
+	// diag_log format ["mine count in area : %1", _minesCountInArea];
 
 	//Creating random position and spawning mines
 	for "_i" from 0 to _minesCountInArea - 1 do {
@@ -104,7 +104,7 @@ grad_hostomel_fnc_createMineField =
 		private _mine = createMine [selectRandom _minesArray, _randomPos, [], 0];
 		_mine enableDynamicSimulation true; 
 
-		diag_log format ["created : %1", _mine];
+		// diag_log format ["created : %1", _mine];
 
 		if (false) then {
 			private _markerName = format ["%1_marker", _mine];
@@ -197,5 +197,32 @@ if(isServer) then {
 			"mi8_river_2.sqf",
 			"mi8_river_3.sqf"
 		];
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel",
+	"Fire Flares",
+	{ 
+		params ["_modulePosition"]; 
+		
+		private _helis = nearestObjects [(ASLtoAGL _modulePosition), ["Air"], 250];
+		private _heli = objNull;
+		if (count _helis > 0) then {
+			_heli = _helis#0;
+		};
+
+		nul = [_heli] spawn 
+		{ 
+			params ["_heli"];
+
+			for "_i" from 1 to 5 do 
+			{ 
+				(driver _heli) forceWeaponFire ["rhs_weap_CMDispenser_ASO2", "Burst"];
+				_heli setVehicleAmmo 1;
+				sleep (random 1 + 1); 
+			}; 
+		};
 	}
 ] call zen_custom_modules_fnc_register;
