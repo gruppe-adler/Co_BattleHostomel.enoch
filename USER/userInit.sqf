@@ -144,6 +144,69 @@ if(isServer) then {
 	} forEach allMapMarkers;
 };
 
+// Mi24 Flyby 
+[
+	"Hostomel Heli Flyby",
+	"3 Mi24",
+	{ 
+		params ["_modulePosition"]; 
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi24_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach [
+			"mi24_flyby_1.sqf",
+			"mi24_flyby_2.sqf",
+			"mi24_flyby_3.sqf"
+		];
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Heli Flyby",
+	"2 Mi24",
+	{ 
+		params ["_modulePosition"]; 
+		
+		private _helis = [
+			"mi24_flyby_1.sqf",
+			"mi24_flyby_2.sqf",
+			"mi24_flyby_3.sqf"
+		];
+		
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 2;
+
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi24_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Heli Flyby",
+	"1 Mi24",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _helis = [
+			"mi24_flyby_1.sqf",
+			"mi24_flyby_2.sqf",
+			"mi24_flyby_3.sqf"
+		];
+		
+		[_helis, true] call CBA_fnc_shuffle;
+		_helis resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\mi24_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _helis;
+	}
+] call zen_custom_modules_fnc_register;
+
+
 // NORTH 
 [
 	"Hostomel Helis North",
