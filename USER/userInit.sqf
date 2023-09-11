@@ -121,6 +121,35 @@ grad_hostomel_fnc_createMineField =
 };
 
 
+grad_hostomel_smoke = {
+  [_this select 0,[0.45,0.67,0.5,0]] spawn {
+      _sh=_this select 0;
+      _col=_this select 1;
+      _c1=_col select 0;
+      _c2=_col select 1;
+      _c3=_col select 2;
+      
+      sleep (20+random 1);
+      _source = "#particlesource" createVehicleLocal getpos _sh;
+      _source setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48], "", "Billboard", 1, 20, [0, 0, 0],
+                      [0.2, 0.1, 0.1], 0, 1.277, 1, 0.025, [0.1, 2, 6], [[_c1, _c2, _c3, 0.2], [_c1, _c2, _c3, 0.05], [_c1, _c2, _c3, 0]],
+                       [1.5,0.5], 1, 0.04, "", "", _sh];
+      _source setParticleRandom [2, [0, 0, 0], [0.25, 0.25, 0.25], 0, 0.5, [0, 0, 0, 0.1], 0, 0, 10];
+      _source setDropInterval 0.50;
+      
+      _source2 = "#particlesource" createVehicleLocal getpos _sh;
+      _source2 setParticleParams [["\A3\data_f\ParticleEffects\Universal\Universal", 16, 12, 8, 0], "", "Billboard", 1, 20, [0, 0, 0],
+                      [0.2, 0.1, 0.1], 0, 1.277, 1, 0.025, [0.1, 2, 6], [[_c1, _c2, _c3, 1], [_c1, _c2, _c3, 0.5], [_c1, _c2, _c3, 0]],
+                       [0.2], 1, 0.04, "", "", _sh];
+      _source2 setParticleRandom [2, [0, 0, 0], [0.25, 0.25, 0.25], 0, 0.5, [0, 0, 0, 0.2], 0, 0, 360];
+      _source2 setDropInterval 0.50;
+      
+      sleep (50+random 5);
+      deletevehicle _source;
+  };
+};
+
+
 if(isServer) then {
 	// Markers into grass cutters script by Sa-Matra
 	{
@@ -450,6 +479,90 @@ if(isServer) then {
 	}
 ] call zen_custom_modules_fnc_register;
 
+[
+	"Hostomel Planes",
+	"1 SU25 from River",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _su25 = [
+			"su25_left.sqf"
+		];
+
+		[_su25, true] call CBA_fnc_shuffle;
+		_su25 resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\su25_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _su25;
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel Planes",
+	"1 SU25 over landing stripe",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _su25 = [
+			"su25_center.sqf"
+		];
+
+		[_su25, true] call CBA_fnc_shuffle;
+		_su25 resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\su25_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _su25;
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel Planes",
+	"1 SU25 right",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _su25 = [
+			"su25_right.sqf"
+		];
+
+		[_su25, true] call CBA_fnc_shuffle;
+		_su25 resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\su25_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _su25;
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel Helicopter",
+	"1 KA52 right",
+	{ 
+		params ["_modulePosition"]; 
+
+		private _ka52 = [
+			"ka52_flyby_1.sqf"
+		];
+
+		[_ka52, true] call CBA_fnc_shuffle;
+		_ka52 resize 1;
+		
+		{
+			private _index = _forEachIndex;
+			[[_x, _index], "USER\heliDrops\su25_flyby.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+		} forEach _ka52;
+	}
+] call zen_custom_modules_fnc_register;
+
+
+
 
 [
 	"Hostomel",
@@ -474,5 +587,46 @@ if(isServer) then {
 				sleep (random 1 + 1); 
 			}; 
 		};
+	}
+] call zen_custom_modules_fnc_register;
+
+
+[
+	"Hostomel",
+	"Supply Drop BMD",
+	{ 
+		params ["_modulePosition"]; 
+		
+		[["rhs_bmd4m_vdv", ASLtoAGL _modulePosition], "USER\heliDrops\supplyDrop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel",
+	"Supply Drop BMD 2K",
+	{ 
+		params ["_modulePosition"]; 
+		
+		[["rhs_bmd2k", ASLtoAGL _modulePosition], "USER\heliDrops\supplyDrop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel",
+	"Supply Drop BMP2K",
+	{ 
+		params ["_modulePosition"]; 
+		
+		[["rhs_bmp2k_vdv", ASLtoAGL _modulePosition], "USER\heliDrops\supplyDrop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
+	}
+] call zen_custom_modules_fnc_register;
+
+[
+	"Hostomel",
+	"Supply Drop PRP3",
+	{ 
+		params ["_modulePosition"]; 
+		
+		[["rhs_prp3_vdv", ASLtoAGL _modulePosition], "USER\heliDrops\supplyDrop.sqf"] remoteExec ["BIS_fnc_execVM", 2];
 	}
 ] call zen_custom_modules_fnc_register;
